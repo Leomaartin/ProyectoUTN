@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= destino.nombre %> - Detalle del Destino</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <%- include("../partials/header") %>
+<section>
+  <div class="detalle-destino">
+    <h1><%= destino.nombreDestino %></h1>
+    <p class="descripcion"><%= destino.descripcion %></p>
+    <div class="info-extra">
+      
+      <div><strong>Ubicación:</strong> <%= destino.pais %></div>
+      <div><strong>Precio:</strong> $<%= destino.precio %></div>
+      <div><strong>Duración:</strong> <%= destino.duracion %> días</div>
+    </div>
+     <div class="checklist">
+  <h2>Fechas:</h2>
+  <ul>
+    <li><input type="checkbox" id="item1"> <label for="item1"> <%= destino.fechaviaje %></label></li>
+    <li><input type="checkbox" id="item2"> <label for="item2"><%= destino.fechaviaje %></label></li>
+    <li><input type="checkbox" id="item3"> <label for="item3"><%= destino.fechaviaje %></label></li>
+    <li><input type="checkbox" id="item4"> <label for="item4"><%= destino.fechaviaje %></label></li>
+  </ul>
+  <a href="/reservar/<%= destino.id %>" class="btn">Reservar Ahora</a>
+</div></div>
+</section>
+<section class="section-img">
+  <img  src="/images/<%=destino.img%>">
+</section>
+<%- include("../partials/footer") %>
+</body>
+</html>

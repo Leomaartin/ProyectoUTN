@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <link href="https://fonts.googleapis.com/css2?family=Redressed&family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <head>
+        <link href="/css/styles.css" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio</title>
+    </head>
+    <body>
+        <%- include("../partials/header") %>
+<main>
+    <div class="subtitulo"><h2><%= resultados[0].nombre%></h2></div>
+    <%if(resultados[0].admin === 1) { %>
+            <p>Eres administrador</p>
+            <i class="fa-solid fa-pen-to-square"></i>  
+            <i class="fa-solid fa-user-pen"></i>
+        <% } %>
+  <div class="subtitulo"><h2>Destinos</h2></div>
+  
+
+  <section class="sectionHome">
+    <article class="destinos">
+        
+      <% destinos.forEach((datos) => { %>
+        <div class="imgHome">
+          <a href="/detalleDestino/<%=datos.id %>">
+            <img src="/images/clasicos.webp" alt="Imagen destino">
+            <p><%= datos.nombreDestino %></p>
+            <p><%= datos.descripcion %></p>
+            <p><%= datos.pais %></p>
+            <p><%= datos.fechaviaje %></p>
+            <p>$<%= datos.precio %></p>
+            <p>$<%= datos.cantidadDisponible%></p>
+          </a>
+        </div>
+        <% }) %>
+    </article>
+
+    <article class="otras-cosas">
+      <div><p>Otras cosas...</p></div>
+    </article>
+  </section>
+</main>
+<%- include("../partials/footer") %>
+
+    </body>
+</html>

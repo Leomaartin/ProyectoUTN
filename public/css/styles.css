@@ -1,0 +1,425 @@
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Tipografía general */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+  padding: 30px;
+}
+.checklist {
+  background-color: #f9f9f9;
+  border-left: 5px solid #136696;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+/*Detalle estilo*/
+
+.section-img img{
+  max-width: 300px;
+}
+.checklist h2 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.checklist ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checklist li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #444;
+}
+
+.checklist input[type="checkbox"] {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  accent-color: #0b3e60;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.checklist input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+/* ================= HEADER ================= */
+header {
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Parte superior del header */
+.header-top,
+.logo-icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  flex-wrap: wrap;
+}
+
+/* Logo */
+.logo img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  margin-left: 10%;
+}
+
+/* Iconos usuario/carrito/login */
+.iconos i {
+  font-size: 1.5rem;
+  color: #333;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.iconos i:hover {
+  color: #555;
+}
+
+/* Barra de búsqueda */
+.barra-busqueda {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.barra-busqueda input {
+  height: 90%;
+
+  font-size: 1rem;
+  border: 1px solid #ccc;
+
+  outline: none;
+}
+.barra-busqueda button {
+  height: 90%;
+  font-size: 0.95rem;
+  background-color: #333;
+  color: white;
+  border: 1px solid #333;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 30%;
+  margin-bottom: 15px;
+}
+.barra-busqueda button:hover {
+  background-color: #0056b3;
+}
+
+/* Navegador principal */
+.navegador ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  padding: 1rem 0;
+  background-color: #f0f0f0;
+}
+.navegador li p {
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s;
+}
+.navegador li p:hover {
+  color: #000;
+}
+.navegador li p a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ================= USUARIOS (tabla y botones) ================= */
+.form-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+.usuarios-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.usuarios-table th,
+.usuarios-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+.usuarios-table th {
+  background-color: #007BFF;
+  color: white;
+  text-transform: uppercase;
+}
+.usuarios-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.usuarios-table tr:hover {
+  background-color: #f1f1f1;
+}
+.edit-btn,
+.delete-btn {
+  padding: 6px 10px;
+  margin: 0 3px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.edit-btn {
+  background-color: #ffc107;
+  color: white;
+}
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Botones edición compactos */
+.botonesEditar {
+  display: flex;
+  gap: 10px;
+}
+.botonesEditar a,
+.botonesEditar button {
+  flex: 1;
+  text-align: center;
+}
+.boton-accion {
+  padding: 2px 0;
+  font-size: 14px;
+  width: 100%;
+  border: none;
+  background-color: #4c99af;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.boton-accion:hover {
+  background-color: #45a049;
+}
+
+/* ================= DETALLE DESTINO ================= */
+.detalle-destino {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fefefe;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+.detalle-destino h1 {
+  font-size: 2.5rem;
+  color: #004d99;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #004d99;
+  padding-bottom: 10px;
+}
+.detalle-destino img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+.detalle-destino .descripcion {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #555;
+}
+.detalle-destino .info-extra {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.detalle-destino .info-extra div {
+  flex: 1 1 200px;
+  background-color: #e6f0ff;
+  padding: 15px 20px;
+  border-radius: 6px;
+  color: #003366;
+  font-weight: 600;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+}
+.detalle-destino .btn {
+  display: inline-block;
+  background-color: #0073e6;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+  margin-top: 30px;
+  box-shadow: 0 3px 6px rgba(0, 115, 230, 0.4);
+}
+.detalle-destino .btn:hover {
+  background-color: #005bb5;
+  box-shadow: 0 5px 15px rgba(0, 91, 181, 0.6);
+}
+
+/* ================= FORMULARIO AGREGAR DESTINO ================= */
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #555;
+}
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="hotmail"],
+input[type="password"],
+input[type="documento"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+textarea {
+  resize: vertical;
+}
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+button:hover {
+  background-color: #2980b9;
+}
+
+/* ================= HOME DESTINOS ================= */
+.subtitulo h2 {
+  font-family: 'Redressed', cursive;
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 2rem 0;
+  color: #444;
+}
+.destinos,
+.destinos2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+.imgHome {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+  width: 280px;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+.imgHome:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+.imgHome img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+.imgHome a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: 16px;
+}
+.imgHome .titulo-destino {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+.imgHome .titulo-descp {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+.imgHome .titulo-pais {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #62cad8;
+  margin-bottom: 8px;
+}
+.imgHome .titulo-fecha {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 8px;
+}
+.imgHome .titulo-precio {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #989393;
+}
+@media (max-width: 768px) {
+  .imgHome {
+    width: 100%;
+    max-width: 90%;
+  }
+}
+
+/* ================= OTRAS COSAS ================= */
+.otras-cosas {
+  margin-top: 3rem;
+  text-align: center;
+}
+.otras-cosas p {
+  font-size: 1.2rem;
+  color: #666;
+}

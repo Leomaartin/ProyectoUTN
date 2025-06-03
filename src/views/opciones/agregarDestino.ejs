@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agregar Destino</title>
+  <link rel="stylesheet" href="/css/estilos.css">
+  <style>
+    .fechas-agregadas {
+      margin-top: 10px;
+    }
+    .fechas-agregadas span {
+      background-color: #dfefff;
+      padding: 5px 10px;
+      margin: 5px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <%- include("../partials/header") %>
+
+  <div class="form-container">
+    <h2>Agregar nuevo destino</h2>
+
+    <form action="/nuevoDestino" method="post" enctype="multipart/form-data" onsubmit="unirFechas()">
+      <label for="nombreDestino">Destino</label>
+      <input type="text" id="nombreDestino" name="nombreDestino" required>
+
+      <label for="precio">Precio</label>
+      <input type="number" step="0.01" name="precio" required>
+
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+
+      <label for="pais">País</label>
+      <input type="text" id="pais" name="pais" required>
+
+      <label for="fechaviaje-input">Fecha de viaje</label>
+      <div style="display: flex; gap: 10px;">
+        <input type="date" id="fechaviaje-input">
+        <button type="button" onclick="agregarFecha()">Agregar</button>
+      </div>
+
+      <div class="fechas-agregadas" id="lista-fechas"></div>
+      <input type="hidden" id="fechaviaje" name="fechaviaje">
+
+      <label for="cantidadDisponible">Cantidad disponible</label>
+      <input type="number" id="cantidadDisponible" name="cantidadDisponible" required>
+
+      <label for="imagen">Subir imagen:</label>
+      <input type="file" name="imagen" id="imagen" accept="image/*" required>
+
+      <button type="submit">Guardar destino</button>
+    </form>
+  </div>
+
+  <script>
+    let fechas = [];
+
+    function agregarFecha() {
+      const inputFecha = document.getElementById("fechaviaje-input");
+      const fecha = inputFecha.value;
+
+      if (fecha && !fechas.includes(fecha)) {
+        fechas.push(fecha);
+        mostrarFechas();
+        inputFecha.value = "";
+      }
+    }
+
+    function mostrarFechas() {
+      const lista = document.getElementById("lista-fechas");
+      lista.innerHTML = fechas.map(f => `<span>${f}</span>`).join("");
+    }
+
+    function unirFechas() {
+      document.getElementById("fechaviaje").value = fechas.join(",");
+    }
+  </script>
+</body>
+</html>
+
+
