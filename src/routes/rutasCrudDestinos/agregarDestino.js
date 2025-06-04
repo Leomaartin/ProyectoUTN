@@ -14,10 +14,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 router.get("/agregarDestino", destinoController.destino);
-router.post("/nuevoDestino", upload.single('imagen'), destinoController.agregarDestino);
+router.post("/nuevoDestino", upload.array('imagenes', 5), destinoController.agregarDestino);
 router.get("/detalleDestino/:id", destinoController.detalle);
 router.get("/editarDetalle/:id", destinoController.editarDetalle);
-router.post("/editarDestino/:id", upload.single('imagen'), destinoController.procesoEditar); 
+router.post("/editarDestino/:id", upload.array('imagenes', 5), destinoController.procesoEditar); 
 router.get("/editarDestino", destinoController.editar);
 router.post("/borrarDestino/:id", destinoController.procesoBorrar);
 

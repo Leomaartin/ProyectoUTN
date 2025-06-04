@@ -19,18 +19,25 @@
       <div><strong>Duración:</strong> <%= destino.duracion %> días</div>
     </div>
      <div class="checklist">
-  <h2>Fechas:</h2>
-  <ul>
-    <li><input type="checkbox" id="item1"> <label for="item1"> <%= destino.fechaviaje %></label></li>
-    <li><input type="checkbox" id="item2"> <label for="item2"><%= destino.fechaviaje %></label></li>
-    <li><input type="checkbox" id="item3"> <label for="item3"><%= destino.fechaviaje %></label></li>
-    <li><input type="checkbox" id="item4"> <label for="item4"><%= destino.fechaviaje %></label></li>
-  </ul>
+ <% let fechas = destino.fechaviaje.split(','); %>
+<h2>Fechas:</h2>
+<ul>
+  <% for (var i = 0; i < fechas.length; i++) { %>
+    <li>
+      <input type="checkbox" id="fecha<%= i %>" name="fechasSeleccionadas" value="<%= fechas[i] %>">
+      <label for="fecha<%= i %>"><%= fechas[i] %></label>
+    </li>
+  <% } %>
+</ul>
+
   <a href="/reservar/<%= destino.id %>" class="btn">Reservar Ahora</a>
 </div></div>
 </section>
 <section class="section-img">
-  <img  src="/images/<%=destino.img%>">
+   <% let img = destino.img.split(','); %>
+  <% for (var i = 0; i < img.length; i++) { %>
+  <img  src="/images/<%=img[i]%>">
+  <% } %>
 </section>
 <%- include("../partials/footer") %>
 </body>

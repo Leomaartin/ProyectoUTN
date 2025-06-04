@@ -8,38 +8,85 @@
 </head>
 <body>
   <%- include("../partials/header") %>
-<div class="form-container">
-  <h2>Editar destino</h2>
-  <form action="/editarDestino/<%= destino.id %>" method="post" enctype="multipart/form-data">
-    
-    <label for="nombre">Id: <%= destino.id %></label>
 
-    <label for="nombreDestino">Destino</label>
-    <input type="text" id="nombreDestino" name="nombreDestino" value="<%= destino.nombreDestino %>" required>
+  <div class="form-container">
+    <h2>Editar destino</h2>
 
-    <label for="precio">Precio</label>
-    <input type="number" id="precio" name="precio" value="<%= destino.precio %>" required>
+    <form action="/editarDestino/<%= destino.id %>" method="post" enctype="multipart/form-data" onsubmit="unirFechas()">
+      <label>Id: <%= destino.id %></label>
 
-    <label for="descripcion">Descripción</label>
-    <textarea id="descripcion" name="descripcion" rows="4" required><%= destino.descripcion %></textarea>
+      <label for="nombreDestino">Destino</label>
+      <input type="text" id="nombreDestino" name="nombreDestino" value="<%= destino.nombreDestino %>" required>
 
-    <label for="pais">País</label>
-    <input type="text" id="pais" name="pais" value="<%= destino.pais %>" required>
+      <label for="precio">Precio</label>
+      <input type="number" id="precio" name="precio" value="<%= destino.precio %>" required>
 
-   <label for="cantidadDisponible">Cantidad disponible</label>
-   <input type="number" id="cantidadDisponible" name="cantidadDisponible" value="<%= destino.cantidadDisponible %>" required>
- 
-   <label for="fechaviaje">Fecha de viaje:</label>
-   <p><%= destino.fechaviaje %></p>
-   <input type="date" id="fechaviaje" name="fechaviaje" value="<%= destino.fechaviaje %>" required>
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" name="descripcion" rows="4"><%= destino.descripcion %></textarea>
 
-  <label for="imagen">Subir imagen:</label>
-  <input type="file" name="imagen" id="imagen" accept="image/*" />
-  <p><%= destino.img %></p>
+      <label for="pais">País</label>
+      <input type="text" id="pais" name="pais" value="<%= destino.pais %>" required>
 
-    <button type="submit">Guardar cambios</button>
-  </form>
-</div>
-<%- include("../partials/footer") %>
+      <label for="cantidadDisponible">Cantidad disponible</label>
+      <input type="number" id="cantidadDisponible" name="cantidadDisponible" value="<%= destino.cantidadDisponible %>" required>
+      <input type="hidden" id="fechaviaje" name="fechaviaje">
+
+      <label for="fechaviaje-input">Fecha de viaje</label>
+      <div style="display: flex; gap: 10px;">
+        <input type="date" id="fechaviaje-input">
+        <button type="button" onclick="agregarFecha()">Agregar</button>
+      </div>
+      <div id="lista-fechas" class="fechas-agregadas">
+        <% if (destino.fechaviaje) {
+          let fechasCargadas = destino.fechaviaje.split(",");
+          fechasCargadas.forEach(f => { %>
+            <span><%= f %></span>
+        <% }) } %>
+      </div>
+
+      <label for="imagen">Subir nuevas imágenes:</label>
+      <input type="file" name="imagenes" id="imagen" accept="image/*" multiple>
+      <div id="lista-imagenes" class="fechas-agregadas"></div>
+      <% if (destino.img) {
+        let imagenes = destino.img.split(",");
+        imagenes.forEach(img => { %>
+          <img src="/images/<%= img %>" alt="Imagen previa" width="100" style="margin: 5px;">
+      <% }) } %>
+
+      <button type="submit">Guardar cambios</button>
+    </form>
+  </div>
+
+  <script>
+    let fechas = [];
+
+    function agregarFecha() {
+      const inputFecha = document.getElementById("fechaviaje-input");
+      const fecha = inputFecha.value;
+
+      if (fecha && !fechas.includes(fecha)) {
+        fechas.push(fecha);
+        mostrarFechas();
+        inputFecha.value = "";
+      }
+    }
+
+    function mostrarFechas() {
+      const lista = document.getElementById("lista-fechas");
+      lista.innerHTML = fechas.map(f => `<span>${f}</span>`).join("");
+    }
+
+    function unirFechas() {
+      document.getElementById("fechaviaje").value = fechas.join(",");
+    }
+
+    document.getElementById("imagen").addEventListener("change", function () {
+      const lista = document.getElementById("lista-imagenes");
+      const archivos = Array.from(this.files);
+      lista.innerHTML = archivos.map(file => `<span>${file.name}</span>`).join("");
+    });
+  </script>
+
+  <%- include("../partials/footer") %>
 </body>
 </html>

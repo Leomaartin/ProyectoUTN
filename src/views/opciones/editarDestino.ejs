@@ -22,7 +22,7 @@
       <% nose.forEach((datos) => { %>
         <div class="imgHome">
           
-            <img src="/images/<%= datos.img %>" alt="Imagen destino">
+            <img src="/images/<%= datos.img.split(",")[0] %>" alt="Imagen destino">
             <p>Destino: <%= datos.nombreDestino %></p>
             <p>Id: <%= datos.id %></p>
        <div class="botonesEditar">

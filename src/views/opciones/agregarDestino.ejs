@@ -48,8 +48,9 @@
       <label for="cantidadDisponible">Cantidad disponible</label>
       <input type="number" id="cantidadDisponible" name="cantidadDisponible" required>
 
-      <label for="imagen">Subir imagen:</label>
-      <input type="file" name="imagen" id="imagen" accept="image/*" required>
+      <label for="imagen">Subir imágenes:</label>
+      <input type="file" name="imagenes" id="imagen" accept="image/*" multiple>
+      <div id="lista-imagenes" class="fechas-agregadas"></div>
 
       <button type="submit">Guardar destino</button>
     </form>
@@ -77,6 +78,12 @@
     function unirFechas() {
       document.getElementById("fechaviaje").value = fechas.join(",");
     }
+
+    document.getElementById("imagen").addEventListener("change", function () {
+      const lista = document.getElementById("lista-imagenes");
+      const archivos = Array.from(this.files);
+      lista.innerHTML = archivos.map(file => `<span>${file.name}</span>`).join("");
+    });
   </script>
 </body>
 </html>

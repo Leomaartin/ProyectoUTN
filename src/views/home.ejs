@@ -21,7 +21,7 @@
       <% results.forEach((datos) => {if(datos.cantidadDisponible >= 1){  %>
         <div class="imgHome">
           <a href="/detalleDestino/<%=datos.id %>">
-            <img src="/images/<%=datos.img%>" alt="Imagen destino">
+            <img src="/images/<%= datos.img.split(",")[0] %>" alt="Imagen destino">
             <p class="titulo-destino"><%= datos.nombreDestino %></p>
             <p class="titulo-pais"><%= datos.pais %></p>
             <p class="titulo-precio">$<%= datos.precio %></p>

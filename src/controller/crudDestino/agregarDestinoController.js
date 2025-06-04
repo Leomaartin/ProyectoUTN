@@ -25,9 +25,9 @@ let destinoController={
     let unaFecha=datos.fechaviaje;
     let unPrecio=datos.precio;
     let cantDispo=datos.cantidadDisponible;
-    let nombreimg = req.file ? req.file.filename : null;
+    let nombresImg = req.files.map(file => file.filename).join(',');
 
-    let registrar = "INSERT INTO destinos (nombreDestino, descripcion, pais, fechaviaje, precio, cantidadDisponible, img) VALUES( '"+unNombre+"', '"+unaDescripcion+"', '"+unPais+"', '"+unaFecha+"', '"+unPrecio+"','"+cantDispo+"','"+nombreimg+"')"
+    let registrar = "INSERT INTO destinos (nombreDestino, descripcion, pais, fechaviaje, precio, cantidadDisponible, img) VALUES( '"+unNombre+"', '"+unaDescripcion+"', '"+unPais+"', '"+unaFecha+"', '"+unPrecio+"','"+cantDispo+"','"+nombresImg+"')"
     conexion.query(registrar,function(error){
         if(error){
          throw error
@@ -61,7 +61,7 @@ procesoEditar: function(req, res) {
     let unaFecha = datos.fechaviaje;
     let unPrecio = datos.precio;
     let cantDisponible = datos.cantidadDisponible;
-    let nombreimg = req.file ? req.file.filename : null;
+    let nombresImg = req.files.map(file => file.filename).join(',');
 
     let actualizar = `
         UPDATE destinos 
@@ -69,7 +69,7 @@ procesoEditar: function(req, res) {
         WHERE id = ?
     `;
 
-    let valores = [unNombre, unaDescripcion, unPais, unaFecha, unPrecio, cantDisponible, nombreimg , idDestino];
+    let valores = [unNombre, unaDescripcion, unPais, unaFecha, unPrecio, cantDisponible, nombresImg , idDestino];
 
     conexion.query(actualizar, valores, function(error) {
         if (error) {
