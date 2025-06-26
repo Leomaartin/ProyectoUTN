@@ -60,6 +60,8 @@ let newUsuarioController = {
       res.send("Usuario o contraseña incorrecta");
     }
   });
-}}
+}
+
+}
 
 module.exports = newUsuarioController;
