@@ -6,7 +6,6 @@ const multer = require('multer');
 
 
 
-
 let rutaHome = require ("./routes/home");
 let rutaDestino = require ("./routes/rutasCrudDestinos/agregarDestino");
 let rutaNewUsuario = require ("./routes/loginRutas/crearUsuario");

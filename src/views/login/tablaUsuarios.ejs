@@ -14,6 +14,9 @@
    <body>
   <div>
   <h2>Usuarios</h2>
+   <a href="/loginUsuario">
+        <img src="/images/Untitled_logo_1_free-file.jpg" alt="Logo TravelStigers" />
+      </a>
   <table class="usuarios-table">
     <thead>
       <tr>
@@ -28,6 +31,7 @@
       </tr>
     </thead>
     <tbody>
+      
       <% usuarios.forEach(usuario => { %>
         <tr>
           <td><%= usuario.id %></td>
@@ -35,11 +39,11 @@
           <td><%= usuario.gmail %></td>
           <td><%= usuario.contrasenia %></td>
           <td><%= usuario.documento %></td>
-          <td><%= usuario.nacimiento %></td>
+          <td><%= new Date(usuario.nacimiento).toLocaleDateString('es-AR') %></td>
           <td><%= usuario.admin === 1 ? 'Sí' : 'No' %></td>
           <td>
-            <button class="edit-btn">Editar</button>
-            <button class="delete-btn">Borrar</button>
+            <button class="edit-btn" data-id="<%= usuario.id %>">Editar</button>
+            <button class="delete-btn" data-id="<%= usuario.id %>">Borrar</button>
           </td>
         </tr>
       <% }) %>
@@ -47,13 +51,10 @@
   </table>
 </div>
 
-<!-- CSS -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
-<!-- Default theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css"/>
-<!-- JavaScript -->
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
-<script src="tablaUsuarios.js"></script>
   <%- include("../partials/footer") %>
 </body>
+<script src="\tablaUsuarios.js"></script>
 </html>

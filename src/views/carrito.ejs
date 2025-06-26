@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito</title>
+  <link href="https://fonts.googleapis.com/css2?family=Redressed&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <%- include("./partials/header") %>
+
+  <main class="main-carrito">
+    <div class="carrito">
+      <p class="carrito-txt">Tus Compras:</p>
+    </div>
+
+    <section class="cajas" id="carrito-contenedor">
+
+    </section>
+    <p>Precio final: <span id="precio-final">$0</span></p>
+    <div class="agregar-compra" style="text-align: center; margin-top: 20px;">
+      <button onclick="localStorage.removeItem('carrito'); location.reload();">
+        Vaciar carrito
+      </button>
+    </div>
+
+  </main>
+
+  <%- include("./partials/footer") %>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const contenedor = document.getElementById("carrito-contenedor");
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  let precioTotal = 0;
+
+  carrito.forEach(item => {
+    const div = document.createElement("div");
+    div.classList.add("rectangulo-carrito");
+    div.innerHTML = `
+      <div class="contenido-rectangulo">
+        <img src="/images/${item.img}" alt="${item.nombre}">
+        <div class="producto"><p>${item.nombre}</p></div>
+        <div class="precio-rectangulo">
+          <p>Subtotal: $${item.precio}</p>
+        </div>
+        <div>
+          <p>Fechas seleccionadas: ${(item.fechas || []).join(', ')}</p>
+        </div>
+      </div>
+    `;
+    contenedor.appendChild(div);
+    precioTotal += parseFloat(item.precio);
+  });
+  document.getElementById("precio-final").textContent = `$${precioTotal.toFixed(2)}`;
+});
+  </script>
+
+</body>
+</html>

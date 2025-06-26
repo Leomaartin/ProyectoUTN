@@ -17,26 +17,30 @@ let destinoController={
     destino:function(req,res){
         res.render("../../src/views/opciones/agregarDestino")
     },
-    agregarDestino:function(req,res){
-    const datos= req.body;
-    let unNombre=datos.nombreDestino;
-    let unaDescripcion=datos.descripcion;
-    let unPais=datos.pais;
-    let unaFecha=datos.fechaviaje;
-    let unPrecio=datos.precio;
-    let cantDispo=datos.cantidadDisponible;
-    let nombresImg = req.files.map(file => file.filename).join(',');
+   agregarDestino: function(req, res){
+    let unNombre = req.body.nombreDestino;
+    let unaDescripcion = req.body.descripcion;
+    let unPais = req.body.pais;
+    let unaFecha = req.body.fechaviaje;
+    let unPrecio = parseFloat(req.body.precio);
+    let cantDispo = parseInt(req.body.cantidadDisponible, 10);
 
-    let registrar = "INSERT INTO destinos (nombreDestino, descripcion, pais, fechaviaje, precio, cantidadDisponible, img) VALUES( '"+unNombre+"', '"+unaDescripcion+"', '"+unPais+"', '"+unaFecha+"', '"+unPrecio+"','"+cantDispo+"','"+nombresImg+"')"
-    conexion.query(registrar,function(error){
+    let nombresImg = '';
+    if(req.files && req.files.length > 0){
+        nombresImg = req.files.map(file => file.filename).join(',');
+    }
+
+    let registrar = `INSERT INTO destinos (nombreDestino, descripcion, pais, fechaviaje, precio, cantidadDisponible, img) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+    let valores = [unNombre, unaDescripcion, unPais, unaFecha, unPrecio, cantDispo, nombresImg];
+
+    conexion.query(registrar, valores, function(error){
         if(error){
-         throw error
-        }else{
+            throw error;
+        } else {
             console.log("Datos almacenados correctamente");
-            res.redirect("/")
+            res.redirect("/");
         }
-
-    })
+    });
 },
 editarDetalle:function(req, res) {
   conexion.query("SELECT * FROM destinos WHERE id = ?", [req.params.id], function(error, resultados) {
@@ -64,10 +68,7 @@ procesoEditar: function(req, res) {
     let nombresImg = req.files.map(file => file.filename).join(',');
 
     let actualizar = `
-        UPDATE destinos 
-        SET nombreDestino = ?, descripcion = ?, pais = ?, fechaviaje = ?, precio = ?, cantidadDisponible = ?,img = ?
-        WHERE id = ?
-    `;
+        UPDATE destinos SET nombreDestino = ?, descripcion = ?, pais = ?, fechaviaje = ?, precio = ?, cantidadDisponible = ?,img = ? WHERE id = ?`;
 
     let valores = [unNombre, unaDescripcion, unPais, unaFecha, unPrecio, cantDisponible, nombresImg , idDestino];
 

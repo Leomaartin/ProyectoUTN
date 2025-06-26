@@ -38,7 +38,7 @@ let newUsuarioController = {
         let unGmail = datos.gmail;
         let unaContrasenia = datos.contrasenia;
 
-        let login = "SELECT * FROM usuarios WHERE gmail = ? AND contrasenia = ?";
+        let login = "SELECT * FROM usuarios WHERE gmail = ? AND contrasenia = ?"
         let consulta = "SELECT * FROM destinos";
 
         conexion.query(login, [unGmail, unaContrasenia], function(error, resultados) {
@@ -58,9 +58,49 @@ let newUsuarioController = {
     } else {
       console.log("Nombre o contraseña incorrectas");
       res.send("Usuario o contraseña incorrecta");
+    }})
+   }, 
+  borrarUsuario: function(req, res) {
+    const id = req.params.id;
+    const query = "DELETE FROM usuarios WHERE id = ?";
+    conexion.query(query, [id], function(error) {
+        if (error) {
+            console.error("Error al borrar usuario:", error);
+            res.status(500).json({ success: false, error });
+        } else {
+            res.json({ success: true, message: "Usuario eliminado" });
+        }
+    });
+  },
+editarUsuario(req, res) {
+  conexion.query(
+    `UPDATE usuarios
+     SET  nombre = ?,
+          gmail  = ?,
+          contrasenia = ?,
+          documento   = ?,
+          nacimiento  = ?,
+          admin       = ?
+     WHERE id = ?`,
+    [
+      req.body.nombre,
+      req.body.gmail,
+      req.body.contrasenia,
+      req.body.documento,
+      req.body.nacimiento,
+      req.body.admin,
+      req.body.id
+    ],
+    (err) => {
+      if (err) {
+        console.error('Error al editar usuario:', err);
+        return res.status(500).json({ mensaje: 'Error al editar usuario' });
+      }
+      res.json({ mensaje: 'Usuario editado correctamente' });
     }
-  });
+  );
 }
+
 
 }
 

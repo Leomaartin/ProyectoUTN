@@ -30,11 +30,48 @@
   <% } %>
 </ul>
 
-  <a href="/reservar/<%= destino.id %>" class="btn">Reservar Ahora</a>
+<a href="#" 
+   class="btn-reservar" 
+   data-id="<%= destino.id %>" 
+   data-nombre="<%= destino.nombreDestino %>" 
+   data-precio="<%= destino.precio %>" 
+   data-img="<%= destino.img.split(',')[0] %>">
+  Reservar Ahora
+</a>
+
+<script>
+  document.querySelectorAll(".btn-reservar").forEach(boton => {
+  boton.addEventListener("click", (e) => {
+    e.preventDefault();
+    const id = boton.dataset.id;
+    const nombre = boton.dataset.nombre;
+    const precio = boton.dataset.precio;
+    const img = boton.dataset.img;
+
+    const checkboxes = document.querySelectorAll('input[name="fechasSeleccionadas"]:checked');
+    let fechasSeleccionadas = [];
+    checkboxes.forEach(cb => fechasSeleccionadas.push(cb.value));
+
+    if (fechasSeleccionadas.length === 0) {
+      alert("Por favor seleccioná al menos una fecha.");
+      return;
+    }
+
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito.push({ id, nombre, precio, img, fechas: fechasSeleccionadas });
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    window.location.href = "/carrito";
+  });
+});
+
+</script>
+
+
 </div></div>
 </section>
 <section class="section-img">
-   <% let img = destino.img.split(','); %>
+<% let img = destino.img.split(','); %>
   <% for (var i = 0; i < img.length; i++) { %>
   <img  src="/images/<%=img[i]%>">
   <% } %>

@@ -12,14 +12,41 @@
         <title>Inicio</title>
     </head>
     <body>
-        <%- include("../partials/header") %>
-<main>
-    <div class="subtitulo"><h2><%= resultados[0].nombre%></h2></div>
-    <%if(resultados[0].admin === 1) { %>
+       <header>
+   <div class="logo-icon">
+    <div class="logo">
+      <a href="/loginUsuario">
+        <img src="/images/Untitled_logo_1_free-file.jpg" alt="Logo TravelStigers" />
+      </a>
+    </div>
+        <div class="barra-busqueda">
+        <input type="text" placeholder="Buscar destino...">
+        <button>Buscar</button>
+    </div>
+     <%if(resultados[0].admin === 1) { %>
+    <div class="iconos">
+      <a href="/agregarDestino" title="Agregar destino"><i class="fa-solid fa-file-circle-plus"></i></a>
+      <a href="/editarDestino" title="Editar destino"><i class="fa-solid fa-file-pen"></i></a>
+      <a href="/crearUsuario" title="Crear cuenta"><i class="fas fa-user-plus"></i></a>
+      <a href="/loginUsuario" title="Iniciar sesión"><i class="fas fa-sign-in-alt"></i></a>
+      <a href="/" title="Cerrar sesión"><i class="fa-solid fa-power-off"></i></i></a>
+      <a href="/mostrarUsuarios" title="Ver usuarios"><i class="fa-solid fa-eye"></i></a>
+       <%if(resultados[0].admin === 1) { %>
             <p>Eres administrador</p>
-            <i class="fa-solid fa-pen-to-square"></i>  
-            <i class="fa-solid fa-user-pen"></i>
         <% } %>
+    </div>
+
+     <% } %>
+  </div>
+  <nav class="navegador">
+    <ul>
+      <li><p><a href="/">Inicio</a></p></li>
+      <li><p><a href="/contacto">Contacto</a></p></li>
+      <div class="subtitulo"><h3>Tu usuario: <%= resultados[0].nombre%></h3></div>
+    </ul>
+  </nav>
+</header>
+<main>
   <div class="subtitulo"><h2>Destinos</h2></div>
   
 
@@ -29,13 +56,11 @@
       <% destinos.forEach((datos) => { %>
         <div class="imgHome">
           <a href="/detalleDestino/<%=datos.id %>">
-            <img src="/images/clasicos.webp" alt="Imagen destino">
-            <p><%= datos.nombreDestino %></p>
-            <p><%= datos.descripcion %></p>
-            <p><%= datos.pais %></p>
+            <img src="/images/<%= datos.img.split(",")[0] %>" alt="Imagen destino">
+            <p class="titulo-destino"><%= datos.nombreDestino %></p>
             <p><%= datos.fechaviaje %></p>
-            <p>$<%= datos.precio %></p>
-            <p>$<%= datos.cantidadDisponible%></p>
+            <p class="titulo-precio">$<%= datos.precio %></p>
+            <p class="titulo-precio">Cantidad disponible: <%= datos.cantidadDisponible%></p>
           </a>
         </div>
         <% }) %>

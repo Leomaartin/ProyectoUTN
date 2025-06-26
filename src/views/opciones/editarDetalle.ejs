@@ -50,7 +50,7 @@
       <% if (destino.img) {
         let imagenes = destino.img.split(",");
         imagenes.forEach(img => { %>
-          <img src="/images/<%= img %>" alt="Imagen previa" width="100" style="margin: 5px;">
+          <img src="/images/<%= img %>" alt="Imagen previa" width="100" style="margin: 5px;" data-id="/images/<%= img %>">
       <% }) } %>
 
       <button type="submit">Guardar cambios</button>
