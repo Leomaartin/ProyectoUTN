@@ -1,12 +1,12 @@
 
-/* Reset básico */
+/* ================= RESET BASICO ================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Tipografía general */
+/* ================= TIPOGRAFIA GRAL ================= */
 body {
   font-family: 'Roboto', sans-serif;
  background-image: url('/images/fondo.png');
@@ -28,7 +28,7 @@ body {
 
 
 
-/*Detalle estilo*/
+/* ================= DETALLE DESTINO ================= */
 
 .section-img img {
   max-width: 700px;

@@ -65,7 +65,11 @@ procesoEditar: function(req, res) {
     let unaFecha = datos.fechaviaje;
     let unPrecio = datos.precio;
     let cantDisponible = datos.cantidadDisponible;
-    let nombresImg = req.files.map(file => file.filename).join(',');
+    let nombresImg = req.body.imgActual; 
+
+if (req.files && req.files.length > 0) {
+    nombresImg = req.files.map(file => file.filename).join(',');
+}
 
     let actualizar = `
         UPDATE destinos SET nombreDestino = ?, descripcion = ?, pais = ?, fechaviaje = ?, precio = ?, cantidadDisponible = ?,img = ? WHERE id = ?`;
@@ -94,6 +98,7 @@ procesoEditar: function(req, res) {
     const idDestino = req.params.id;
 
     let borrar = `DELETE FROM destinos WHERE id = ?`;
+    
 
     conexion.query(borrar, [idDestino], function(error) {
         if (error) {
