@@ -11,12 +11,6 @@
 
   <div class="form-container">
     <h2>Editar destino</h2>
-
-    <!--
-      Opción A implementada:
-      1. Se añade un input hidden "imgActual" con el valor de las imágenes actuales.
-      2. Si no se adjuntan archivos nuevos, el backend conservará estas imágenes.
-    -->
     <form action="/editarDestino/<%= destino.id %>" method="post" enctype="multipart/form-data" onsubmit="unirFechas()">
       <input type="hidden" name="imgActual" value="<%= destino.img %>">
 
