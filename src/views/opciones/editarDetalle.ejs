@@ -11,7 +11,7 @@
 
   <div class="form-container">
     <h2>Editar destino</h2>
-    <form action="/editarDestino/<%= destino.id %>" method="post" enctype="multipart/form-data" onsubmit="unirFechas()">
+    <form action="/editarDestino/<%= destino.id %>" method="post" class="formeditar" enctype="multipart/form-data" onsubmit="unirFechas()">
       <input type="hidden" name="imgActual" value="<%= destino.img %>">
 
       <label>Id: <%= destino.id %></label>
@@ -35,7 +35,7 @@
       <label for="fechaviaje-input">Fecha de viaje</label>
       <div style="display: flex; gap: 10px;">
         <input type="date" id="fechaviaje-input">
-        <button type="button" onclick="agregarFecha()">Agregar</button>
+        <button type="button" onclick="agregarFecha()" class="agregarDetalle">Agregar</button>
       </div>
       <div id="lista-fechas" class="fechas-agregadas">
         <% if (destino.fechaviaje) {
@@ -55,7 +55,7 @@
           <img src="/images/<%= img %>" alt="Imagen previa" width="100" style="margin: 5px;">
       <% }) } %>
 
-      <button type="submit">Guardar cambios</button>
+      <button class="guardarboton" type="submit">Guardar cambios</button>
     </form>
   </div>
 

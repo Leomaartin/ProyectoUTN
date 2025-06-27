@@ -127,22 +127,6 @@ header {
 
   outline: none;
 }
-.barra-busqueda button {
-  height: 90%;
-  font-size: 0.95rem;
-  background-color: #333;
-  color: white;
-  border: 1px solid #333;
-  border-radius: 0 8px 8px 0;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  width: 30%;
-  margin-bottom: 15px;
-}
-.barra-busqueda button:hover {
-  background-color: #0056b3;
-}
-
 /* Navegador principal */
 .navegador ul {
   display: flex;
@@ -168,7 +152,7 @@ header {
 
 /* ================= USUARIOS (tabla y botones) ================= */
 .form-container {
-  max-width: 1000px;
+  width: 35%;
   margin: 30px auto;
   padding: 20px;
   background: #f5f5f5;
@@ -218,11 +202,12 @@ h2 {
 .botonesEditar {
   display: flex;
   gap: 10px;
+  margin-left: 25%;
+  margin-bottom: 5%;
 }
-.botonesEditar a,
 .botonesEditar button {
-  flex: 1;
   text-align: center;
+  padding: 12px;
 }
 .boton-accion {
   padding: 2px 0;
@@ -235,9 +220,18 @@ h2 {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.boton-accion:hover {
-  background-color: #45a049;
+#editar{
+  transition: background-color 0.6s;
+   border: 0.2px solid #afadad;
 }
+#editar:hover {
+  background-color: #30be38;
+}
+#borrar:hover {
+  background-color: #fa1717;
+}
+
+
 
 /* ================= DETALLE DESTINO ================= */
 .detalle-destino {
@@ -254,7 +248,7 @@ h2 {
   font-size: 2.5rem;
   color: #004d99;
   margin-bottom: 15px;
-  border-bottom: 2px solid #004d99;
+  border-bottom: 2px solid #fbfbfb;
   padding-bottom: 10px;
 }
 .detalle-destino img {
@@ -302,45 +296,56 @@ h2 {
   background-color: #005bb5;
   box-shadow: 0 5px 15px rgba(0, 91, 181, 0.6);
 }
+.agregarDetalle{
+  margin-right: 40%;
+  margin-left: 0;
+  margin-bottom: 1%;
+}
 
 /* ================= FORMULARIO AGREGAR DESTINO ================= */
 label {
   display: block;
-  margin-top: 15px;
+  margin-top: 10px;
   font-weight: bold;
   color: #555;
 }
-input[type="text"],
 input[type="number"],
+input[type="text"],
 input[type="date"],
 input[type="hotmail"],
 input[type="password"],
 input[type="documento"],
 textarea,
 select {
-  width: 100%;
+  width: 90%;
   padding: 10px;
-  margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 6px;
   box-sizing: border-box;
+}
+.formeditar{
+  margin-left: 10%;
 }
 textarea {
   resize: vertical;
 }
 button {
   margin-top: 20px;
-  width: 100%;
+  margin-left: 44%;
+  width: 12%;
   padding: 12px;
-  background-color: #3498db;
+  background-color: #4c99af;
   color: white;
-  border: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 16px;
+  border: 0.2px solid #afadad;
+  box-shadow: 0 3px 6px rgba(0, 115, 230, 0.4);
+   transition: background-color 0.3s ease, transform 0.2s;
 }
 button:hover {
-  background-color: #2980b9;
+  background-color: #185cfafe;
+ transition: background-color 1s ease;
 }
 
 /* ================= HOME DESTINOS ================= */
@@ -419,6 +424,11 @@ button:hover {
   font-weight: bold;
   color: #989393;
 }
+#editardestinos{
+  margin-left: 20%;
+  font-family:Verdana,
+}
+
 @media (max-width: 768px) {
   .imgHome {
     width: 100%;
@@ -564,4 +574,23 @@ button:hover {
     width: 100%;
     margin-top: 10px;
   }
+}
+.guardarboton {
+  display: block;
+  margin: 30px auto 0 auto; 
+  padding: 12px 30px;
+  background-color: #4c99af;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  border: 0.2px solid #afadad;
+  width: fit-content; 
+}
+.btn-reservar{
+  text-decoration: none;
+}
+.btn-reservar p{
+  color: #e2e2e2;
+
 }

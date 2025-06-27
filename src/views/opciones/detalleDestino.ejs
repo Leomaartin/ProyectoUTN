@@ -30,14 +30,14 @@
   <% } %>
 </ul>
 
-<a href="#" 
+<button><a href="#" 
    class="btn-reservar" 
    data-id="<%= destino.id %>" 
    data-nombre="<%= destino.nombreDestino %>" 
    data-precio="<%= destino.precio %>" 
    data-img="<%= destino.img.split(',')[0] %>">
-  Reservar Ahora
-</a>
+  <p>Reservar Ahora</p></a>
+  </button>
 
 <script>
   document.querySelectorAll(".btn-reservar").forEach(boton => {

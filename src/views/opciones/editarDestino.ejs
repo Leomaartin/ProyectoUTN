@@ -15,7 +15,7 @@
         <%- include("../partials/header") %>
 <main>
   <div class="subtitulo"><h2>Destinos</h2></div>
-  <a href="/agregarDestino"><button>Agregar</button></a>
+  <a href="/agregarDestino" class="agregar"><button>Agregar</button></a>
 
   <section class="sectionHome">
     <article class="destinos">
@@ -23,15 +23,15 @@
         <div class="imgHome">
           
             <img src="/images/<%= datos.img.split(",")[0] %>" alt="Imagen destino">
-            <p>Destino: <%= datos.nombreDestino %></p>
-            <p>Id: <%= datos.id %></p>
+            <p id="editardestinos">Destino: <%= datos.nombreDestino %></p>
+            <p id="editardestinos">Id: <%= datos.id %></p>
        <div class="botonesEditar">
-    <a href="/editarDetalle/<%= datos.id %>">
-        <button class="boton-accion">Editar</button>
-    </a>
+     <form action="/editarDetalle/<%= datos.id %>" style="display:inline;">
+       <button class="boton-accion" id="editar">Editar</button>
+       </form>
 
     <form action="/borrarDestino/<%= datos.id %>" method="POST" style="display:inline;">
-        <button class="boton-accion" type="submit">Borrar</button>
+        <button class="boton-accion" id="borrar" type="submit">Borrar</button>
     </form>
 </div>
 
