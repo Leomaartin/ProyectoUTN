@@ -1,68 +1,72 @@
 <!DOCTYPE html>
-<html>
-    <head lang="en">
-        <link href="https://fonts.googleapis.com/css2?family=Redressed&family=Roboto&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <head>
-        <link href="/css/styles.css" rel="stylesheet">
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inicio</title>
-    </head>
-    <body>
-       <header>
-   <div class="logo-icon">
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Redressed&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="icon" type="image/x-icon" href=" /images/Untitled_logo_1_free-file.ico">
+</head>
+
+<body>
+<header>
+  <div class="logo-icon">
     <div class="logo">
       <a href="/loginUsuario">
-        <img src="/images/Untitled_logo_1_free-file.jpg" alt="Logo TravelStigers" />
+        <img src="/images/Untitled_logo_1_free-file.jpg" alt="Logo TravelStigers">
       </a>
     </div>
-        <div class="barra-busqueda">
-        <input type="text" placeholder="Buscar destino...">
-    </div>
-     <%if(resultados[0].admin === 1) { %>
-    <div class="iconos">
-      <a href="/agregarDestino" title="Agregar destino"><i class="fa-solid fa-file-circle-plus"></i></a>
-      <a href="/editarDestino" title="Editar destino"><i class="fa-solid fa-file-pen"></i></a>
-      <a href="/crearUsuario" title="Crear cuenta"><i class="fas fa-user-plus"></i></a>
-      <a href="/loginUsuario" title="Iniciar sesión"><i class="fas fa-sign-in-alt"></i></a>
-      <a href="/" title="Cerrar sesión"><i class="fa-solid fa-power-off"></i></i></a>
-      <a href="/mostrarUsuarios" title="Ver usuarios"><i class="fa-solid fa-eye"></i></a>
-       <%if(resultados[0].admin === 1) { %>
-            <p>Eres administrador</p>
-        <% } %>
+
+    <div class="barra-busqueda">
+      <input type="text" placeholder="Buscar destino...">
     </div>
 
-     <% } %>
+    <% const esAdmin = user && user.admin === 1; %>
+    <div class="iconos">
+      <% if (esAdmin) { %>
+        <a href="/agregarDestino"  title="Agregar destino"><i class="fa-solid fa-file-circle-plus"></i></a>
+        <a href="/editarDestino"   title="Editar destino"><i class="fa-solid fa-file-pen"></i></a>
+        <a href="/crearUsuario"    title="Crear cuenta"><i class="fas fa-user-plus"></i></a>
+        <a href="/mostrarUsuarios" title="Ver usuarios"><i class="fa-solid fa-eye"></i></a>
+        <a href="/logout" title="Cerrar sesión"><i class="fa-solid fa-power-off"></i></a>
+          <% if (esAdmin) { %><p>Eres administrador</p><% } %>
+      <% } %>
+
+    </div>
   </div>
+
   <nav class="navegador">
     <ul>
       <li><p><a href="/">Inicio</a></p></li>
       <li><p><a href="/contacto">Contacto</a></p></li>
-      <div class="subtitulo"><h3>Tu usuario: <%= resultados[0].nombre%></h3></div>
+      <div class="subtitulo">
+        <h3>Tu usuario: <%= user.nombre %></h3>
+      </div>
     </ul>
   </nav>
 </header>
+
 <main>
   <div class="subtitulo"><h2>Destinos</h2></div>
-  
 
   <section class="sectionHome">
     <article class="destinos">
-        
-      <% destinos.forEach((datos) => { %>
+      <% destinos.forEach(dest => { %>
         <div class="imgHome">
-          <a href="/detalleDestino/<%=datos.id %>">
-            <img src="/images/<%= datos.img.split(",")[0] %>" alt="Imagen destino">
-            <p class="titulo-destino"><%= datos.nombreDestino %></p>
-            <p><%= datos.fechaviaje %></p>
-            <p class="titulo-precio">$<%= datos.precio %></p>
-            <p class="titulo-precio">Cantidad disponible: <%= datos.cantidadDisponible%></p>
+          <a href="/detalleDestino/<%= dest.id %>">
+            <img src="/images/<%= dest.img.split(',')[0] %>" alt="Imagen destino">
+            <p class="titulo-destino"><%= dest.nombreDestino %></p>
+            <p><%= dest.fechaviaje %></p>
+            <p class="titulo-precio">$<%= dest.precio %></p>
+            <p class="titulo-precio">Cantidad disponible: <%= dest.cantidadDisponible %></p>
           </a>
         </div>
-        <% }) %>
+      <% }) %>
     </article>
 
     <article class="otras-cosas">
@@ -70,7 +74,7 @@
     </article>
   </section>
 </main>
-<%- include("../partials/footer") %>
 
-    </body>
+<%- include("../partials/footer") %>
+</body>
 </html>

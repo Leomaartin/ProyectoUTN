@@ -1,29 +1,36 @@
 <!DOCTYPE html>
-<html>
-    <head lang="en">
-        <link href="https://fonts.googleapis.com/css2?family=Redressed&family=Roboto&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <head>
-        <link href="/css/styles.css" rel="stylesheet">
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inicio</title>
-    </head>
-   <body>
-  <div class="form-container">
-    <h2>Crear Nuevo Usuario</h2>
-    <form action="/loginUsuario" method="post">
-    
-      <label for="gmail">Gmail:</label>
-      <input type="hotmail" id="gmail" name="gmail" required>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar sesión</title>
+  <link href="https://fonts.googleapis.com/css2?family=Redressed&family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="/css/styles.css" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href=" /images/Untitled_logo_1_free-file.ico">
+</head>
+  <%- include("../partials/header") %>
 
-      <label for="contrasenia">Contraseña:</label>
-      <input type="password" id="contrasenia" name="contrasenia" required>
+<body>
+  <div class="form-container logincuadrado">
+    <h2>Iniciar Sesión</h2>
 
-      <button type="submit">Enviar</button>
+    <% if (error) { %>
+      <p style="color: red;"><%= error %></p>
+    <% } %>
+
+    <form action="/loginUsuario" method="POST">
+      <label for="gmail" class="labellogin">Email:</label>
+      <input type="email" id="gmail" name="gmail"class="inputlogin" required />
+
+      <label for="contrasenia" class="labellogin">Contraseña:</label>
+      <input type="password" id="contrasenia" name="contrasenia" class="inputlogin" required />
+
+      <button type="submit" class="buttongrla ingresa">Ingresar</button>
     </form>
+
+    <p>¿No tenés cuenta? <a href="/crearUsuario" class="registrate">Registrate acá</a></p>
   </div>
   <%- include("../partials/footer") %>
 </body>

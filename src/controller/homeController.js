@@ -9,6 +9,9 @@ let homeController = {
                 res.render("home", { results: results });
             }
         });
+    },
+    contacto: function(req, res){
+        res.render("../../src/views/contacto")
     }
 };
 

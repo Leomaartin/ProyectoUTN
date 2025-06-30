@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title><%= destino.nombreDestino %> - Detalle del Destino</title>
   <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" type="image/x-icon" href=" /images/Untitled_logo_1_free-file.ico">
 </head>
 <body>
   <%- include("../partials/header") %>
@@ -35,7 +36,7 @@
       <label for="fechaviaje-input">Fecha de viaje</label>
       <div style="display: flex; gap: 10px;">
         <input type="date" id="fechaviaje-input">
-        <button type="button" onclick="agregarFecha()" class="agregarDetalle">Agregar</button>
+        <button type="button" onclick="agregarFecha()" class="agregarDetalle buttongrla">Agregar</button>
       </div>
       <div id="lista-fechas" class="fechas-agregadas">
         <% if (destino.fechaviaje) {
@@ -55,7 +56,7 @@
           <img src="/images/<%= img %>" alt="Imagen previa" width="100" style="margin: 5px;">
       <% }) } %>
 
-      <button class="guardarboton" type="submit">Guardar cambios</button>
+      <button class="guardarboton buttongrla" type="submit">Guardar cambios</button>
     </form>
   </div>
 

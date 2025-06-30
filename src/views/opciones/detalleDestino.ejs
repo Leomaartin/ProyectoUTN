@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title><%= destino.nombre %> - Detalle del Destino</title>
+  <title><%= destino.nombre %>Detalle del Destino</title>
   <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" type="image/x-icon" href=" /images/Untitled_logo_1_free-file.ico">
 </head>
 <body>
   <%- include("../partials/header") %>
@@ -30,7 +31,7 @@
   <% } %>
 </ul>
 
-<button><a href="#" 
+<button class="buttongrla"><a href="#" 
    class="btn-reservar" 
    data-id="<%= destino.id %>" 
    data-nombre="<%= destino.nombreDestino %>" 
@@ -38,7 +39,8 @@
    data-img="<%= destino.img.split(',')[0] %>">
   <p>Reservar Ahora</p></a>
   </button>
-
+</div></div>
+</section>
 <script>
   document.querySelectorAll(".btn-reservar").forEach(boton => {
   boton.addEventListener("click", (e) => {
@@ -66,10 +68,6 @@
 });
 
 </script>
-
-
-</div></div>
-</section>
 <section class="section-img">
 <% let img = destino.img.split(','); %>
   <% for (var i = 0; i < img.length; i++) { %>

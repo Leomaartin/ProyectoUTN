@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Agregar Destino</title>
   <link rel="stylesheet" href="/css/estilos.css">
+  <link rel="icon" type="image/x-icon" href=" /images/Untitled_logo_1_free-file.ico">
   <style>
     .fechas-agregadas {
       margin-top: 10px;
@@ -39,7 +40,7 @@
       <label for="fechaviaje-input">Fecha de viaje</label>
       <div style="display: flex; gap: 10px;">
         <input type="date" id="fechaviaje-input">
-        <button type="button" onclick="agregarFecha()">Agregar</button>
+        <button type="button" class="buttongrla" onclick="agregarFecha()">Agregar</button>
       </div>
 
       <div class="fechas-agregadas" id="lista-fechas"></div>
@@ -52,7 +53,7 @@
       <input type="file" name="imagenes" id="imagen" accept="image/*" multiple>
       <div id="lista-imagenes" class="fechas-agregadas"></div>
 
-      <button type="submit">Guardar destino</button>
+      <button type="submit" class="guardarboton buttongrla">Guardar destino</button>
     </form>
   </div>
 

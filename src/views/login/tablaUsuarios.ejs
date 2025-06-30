@@ -1,60 +1,61 @@
 <!DOCTYPE html>
-<html>
-    <head lang="en">
-        <link href="https://fonts.googleapis.com/css2?family=Redressed&family=Roboto&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <head>
-        <link href="/css/styles.css" rel="stylesheet">
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inicio</title>
-    </head>
-   <body>
-  <div>
-  <h2>Usuarios</h2>
-   <a href="/loginUsuario">
-        <img src="/images/Untitled_logo_1_free-file.jpg" alt="Logo TravelStigers" />
-      </a>
-  <table class="usuarios-table">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Nombre</th>
-        <th>Gmail</th>
-        <th>Contraseña</th>
-        <th>Documento</th>
-        <th>Nacimiento</th>
-        <th>Es Admin</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-      <% usuarios.forEach(usuario => { %>
-        <tr>
-          <td><%= usuario.id %></td>
-          <td><%= usuario.nombre %></td>
-          <td><%= usuario.gmail %></td>
-          <td><%= usuario.contrasenia %></td>
-          <td><%= usuario.documento %></td>
-          <td><%= new Date(usuario.nacimiento).toLocaleDateString('es-AR') %></td>
-          <td><%= usuario.admin === 1 ? 'Sí' : 'No' %></td>
-          <td>
-            <button class="edit-btn" data-id="<%= usuario.id %>">Editar</button>
-            <button class="delete-btn" data-id="<%= usuario.id %>">Borrar</button>
-          </td>
-        </tr>
-      <% }) %>
-    </tbody>
-  </table>
-</div>
+<html lang="es">
+<head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio</title>
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css"/>
-<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Redressed&family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css"/>
+    <link rel="icon" type="image/x-icon" href=" /images/Untitled_logo_1_free-file.ico">
+</head>
+<body>
+  <div>
+    <h2>Usuarios</h2>
+    <a href="/">
+      <img src="/images/Untitled_logo_1_free-file.jpg" alt="Logo TravelStigers" id="logotabla"/>
+    </a>
+    <table class="usuarios-table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Gmail</th>
+          <th>Contraseña</th>
+          <th>Documento</th>
+          <th>Nacimiento</th>
+          <th>Es Admin</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% usuarios.forEach(usuario => { %>
+          <tr>
+            <td><%= usuario.id %></td>
+            <td><%= usuario.nombre %></td>
+            <td><%= usuario.gmail %></td>
+            <td><%= usuario.contrasenia %></td>
+            <td><%= usuario.documento %></td>
+            <td><%= new Date(usuario.nacimiento).toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-') %></td>
+            <td><%= usuario.admin === 1 ? 'Sí' : 'No' %></td>
+            <td class="botonesUsuarios">
+              <div class="btn-group">
+                <button class="edit-btn" data-id="<%= usuario.id %>">Editar</button>
+                <button class="delete-btn" data-id="<%= usuario.id %>">Eliminar</button>
+              </div>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
   <%- include("../partials/footer") %>
+  <script src="/tablaUsuarios.js"></script>
 </body>
-<script src="\tablaUsuarios.js"></script>
 </html>
